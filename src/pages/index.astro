@@ -1,16 +1,131 @@
 ---
-
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import SectionHeading from "@components/SectionHeading.astro";
+import { homeMeta, projectsDetail, socials } from "@consts";
+import PageLayout from "@layouts/PageLayout.astro";
+import { Image } from "astro:assets";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<PageLayout title={homeMeta.title} description={homeMeta.description}>
+	<!-- Hero Section -->
+	<section>
+		<div
+			class="flex justify-between flex-col-reverse md:flex-row gap-y-6 mb-8"
+		>
+			<div class="hero-title">
+				<h1
+					class="font-bold text-3xl md:text-5xl text-content mb-2 tracking-wider"
+				>
+					Ronak Patel
+				</h1>
+				<h2
+					class="text-base md:text-lg text-subContent leading-relaxed font-medium tracking-wide"
+				>
+					Frontend Developer
+				</h2>
+			</div>
+			<div class="hero-image">
+				<Image
+					src="/ronak.webp"
+					class="rounded-md"
+					width={90}
+					height={90}
+					decoding="async"
+					loading="lazy"
+					alt="Ronak Patel"
+				/>
+			</div>
+		</div>
+
+		<!-- About Section -->
+		<div
+			class="text-justify text-content tracking-wide flex flex-col gap-y-4"
+		>
+			<p>
+				I approach my work the way an artist approaches a canvas, mixing
+				solid React fundamentals with a creative eye to shape interfaces
+				that feel intentional, modern, and quietly expressive. Blending
+				code and creativity to craft art on the internet.
+			</p>
+			<p>
+				Feel free to explore some of my coding endeavors on <Link
+					href="https://github.com/R-o-n-a-k"
+					class="font-semibold"
+					external
+					underline>GitHub</Link
+				>.
+			</p>
+		</div>
+	</section>
+	<!-- Recent Project Section -->
+	<section>
+		<SectionHeading
+			headingText="Recent Projects"
+			headingLinkText="See all projects"
+			headingLinkPath="/projects"
+		/>
+		<div>
+			{
+            projectsDetail.map((project) => (
+                <ArrowCard
+                    arrowCardTitle={project.title}
+                    arrowCardDescription={project.desc}
+                />
+            ))
+        }
+		</div>
+	</section>
+	<!-- Current Career Section -->
+	<section>
+		<SectionHeading
+			headingText="Currently Working"
+			headingLinkText="See all Experience"
+			headingLinkPath="/career"
+		/>
+		<div>
+			<p class="text-content">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				Repudiandae eius quisquam provident eaque alias cupiditate rerum
+				atque deleniti, maxime natus maiores veniam non unde dolorem
+				culpa quis explicabo ipsum iure.
+			</p>
+		</div>
+	</section>
+	<!-- Contact Section -->
+	<section>
+		<SectionHeading headingText="Let's Connect" />
+		<div>
+			<p class="text-content">
+				Have an idea worth creating? Let’s craft it together — feel free
+				to reach out.
+			</p>
+			<ul class="flex flex-wrap gap-2 my-2">
+				{
+					socials.map((social) => (
+						<li class="flex gap-x-2 text-nowrap">
+							<Link
+								href={social.href}
+								external
+								underline
+								class="text-subContent hover:text-foreground"
+							>
+								{social.name}
+							</Link>
+							<span class="text-subContent">{"/"}</span>
+						</li>
+					))
+				}
+				<li class="line-clamp-1">
+					<Link
+						href={`mailto:ronak.p.1206@gmail.com`}
+						underline
+						class="text-subContent hover:text-foreground"
+					>
+						ronak.p.1206@gmail.com
+					</Link>
+				</li>
+			</ul>
+		</div>
+	</section>
+</PageLayout>

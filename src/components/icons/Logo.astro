@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+
+import logoLight from "/public/logo-light.png";
+import logoDark from "/public/logo-dark.png";
+---
+
+<Image
+    class="site-logo"
+    src={logoLight}
+    alt="Ronak Patel"
+    width={35}
+    height={35}
+    format="webp"
+/>
+
+<style>
+    .site-logo {
+        content: url("/logo-light.png");
+    }
+
+    html.dark .site-logo {
+        content: url("/logo-dark.png");
+    }
+</style>

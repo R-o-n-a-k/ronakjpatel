@@ -1,0 +1,13 @@
+---
+import ThemeButton from "./ThemeButton.astro";
+let currentYear = new Date().getFullYear();
+---
+
+<div class="text-xs md:text-sm tracking-wider text-subContent flex justify-between items-center pb-6 mt-20">
+    <div>
+        &copy; {currentYear} {`|`} Ronak Patel
+    </div>
+    <div>
+        <ThemeButton />
+    </div>
+</div>

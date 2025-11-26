@@ -1,0 +1,18 @@
+---
+import SunIcon from "./icons/SunIcon.astro";
+import MoonIcon from "./icons/MoonIcon.astro";
+---
+<button
+  id="theme-toggle"
+  aria-label="Toggle theme"
+>
+  <SunIcon
+    id="sun-icon"
+    className="hidden dark:block text-subContent transition-animation cursor-pointer"
+  />
+
+  <MoonIcon
+    id="moon-icon"
+    className="block dark:hidden text-subContent transition-animation cursor-pointer"
+  />
+</button>

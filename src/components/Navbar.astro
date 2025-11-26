@@ -1,0 +1,25 @@
+---
+import Link from "./Link.astro";
+import Logo from "@components/icons/Logo.astro";
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === currentPath ? "underline underline-offset-2" : "text-subContent";
+---
+
+<nav
+  class="sticky top-0 z-50 flex items-center justify-between py-2 backdrop-blur-xs saturate-300"
+>
+  <div class="nav-logo">
+    <Link href="/" underline="false">
+      <Logo />
+    </Link>
+  </div>
+  <div class="nav-links flex items-center justify-center gap-2 text-subContent">
+    <Link href="/projects" hover class={`text-content ${isActive("/projects")}`}> projects </Link>
+    <span>
+      {`/`}
+    </span>
+    <Link href="/career" hover class={`text-content ${isActive("/career")}`}> career </Link>
+  </div>
+</nav>

@@ -1,0 +1,21 @@
+---
+import "@/styles/global.css";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import Navbar from "@components/Navbar.astro";
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en" class="view-transition">
+  <head>
+    <Header title={title} description={description} />
+  </head>
+  <body class="selection:bg-zinc-200 dark:selection:bg-zinc-700">
+    <main>
+      <Navbar/>
+      <slot />
+      <Footer/>
+    </main>
+  </body>
+</html>
