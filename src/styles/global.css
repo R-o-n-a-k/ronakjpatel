@@ -13,20 +13,20 @@
 }
 
 :root {
-    --background: #fafafa;
+    --background: #f4f4f5;
     --foreground: #18181b;
-    --content: #3f3f46;
-    --subContent: #71717a;
+    --content:#3f3f46;
+    --subContent: #a1a1aa;
     --btn-hover: #e4e4e7;
     --btn-hover-border: #a1a1aa;
 }
 
 .dark {
-    --background: #09090b;
-    --foreground: #fafafa;
-    --content: #d4d4d8;
-    --subContent: #71717a;
-    --btn-hover: #27272a;
+    --background: #18181b; 
+    --foreground: #f4f4f5; 
+    --content:#a1a1aa;
+    --subContent:#52525b;
+    --btn-hover: #27272a; 
     --btn-hover-border: #52525b;
 }
 
