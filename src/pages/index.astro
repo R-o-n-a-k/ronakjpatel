@@ -5,6 +5,12 @@ import SectionHeading from "@components/SectionHeading.astro";
 import { homeMeta, projectsDetail, socials } from "@consts";
 import PageLayout from "@layouts/PageLayout.astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+const featuredProjects = projects.filter(
+  (project) => project.data.featured
+);
 ---
 
 <PageLayout title={homeMeta.title} description={homeMeta.description}>
@@ -66,14 +72,18 @@ import { Image } from "astro:assets";
 			headingLinkPath="/projects"
 		/>
 		<div>
-			{
+			
+			{featuredProjects.map((project) => (
+				<ArrowCard entry={project} />
+			))}
+			<!-- {
             projectsDetail.map((project) => (
                 <ArrowCard
                     arrowCardTitle={project.title}
                     arrowCardDescription={project.desc}
                 />
             ))
-        }
+        } -->
 		</div>
 	</section>
 	<!-- Current Career Section -->

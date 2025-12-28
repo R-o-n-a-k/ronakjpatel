@@ -1,0 +1,96 @@
+---
+import BackToPrev from "@components/BackToPrev.astro";
+import Link from "@components/Link.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+
+---
+
+<PageLayout>
+  <section>
+    <BackToPrev href="/projects"> Back to Projects </BackToPrev>
+
+    <!-- Project Header -->
+    <div class="space-y-0.5 my-10">
+      <!-- Project Date -->
+      <p class="text-sm md:text-base text-subContent font-semibold">{project.data.date}</p>
+
+      <!-- Project Heading -->
+      <h1 class="text-xl md:text-2xl font-bold text-foreground tracking-wide">
+        {project.data.title}
+      </h1>
+
+      <!-- Project URL -->
+      {
+        (project.data.demoURL || project.data.repoURL) && (
+          <nav class="flex gap-1 text-subContent text-sm md:text-base">
+            {project.data.demoURL && (
+              <Link
+                href={project.data.demoURL}
+                class="text-subContent hover:text-foreground"
+                underline
+                external
+              >
+                demo
+              </Link>
+            )}
+            {project.data.demoURL && project.data.repoURL && <span>/</span>}
+            {project.data.repoURL && (
+              <Link
+                href={project.data.repoURL}
+                class="text-subContent hover:text-foreground"
+                underline
+                external
+              >
+                github
+              </Link>
+            )}
+          </nav>
+        )
+      }
+    </div>
+
+    <!-- Project Image -->
+    <img
+      src={project.data.banner}
+      alt={project.data.title}
+      loading="lazy"
+      decoding="async"
+      class="w-full rounded-lg object-cover"
+    />
+
+    <!-- Project description -->
+    <div class="mt-5 mb-10">
+      <p class="text-sm md:text-base text-content">
+        {project.data.description}
+      </p>
+
+      <div class="flex gap-2 mt-5">
+        {
+          project.data.tech.map((t) => (
+            <span class="text-xs px-2 py-1 border text-foreground border-content rounded-full">
+              {t}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <article class="prose max-w-none">
+      <Content />
+    </article>
+
+  </section>
+</PageLayout>

@@ -7,7 +7,7 @@ const { headingText, headingLinkText, headingLinkPath } = Astro.props;
 <div class="flex items-center justify-between mb-4">
     <h4 class="text-lg font-semibold text-foreground tracking-wide">{headingText}</h4>
     {
-        headingLinkPath && headingLinkPath && (
+        headingLinkPath && (
             <Link
                 href={headingLinkPath}
                 underline

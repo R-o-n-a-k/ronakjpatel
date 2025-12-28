@@ -1,0 +1,21 @@
+---
+title: "Fake News Detection"
+description: "A machine learning-based application to detect fake news articles."
+date: "Apr 05, 2024"
+featured: false
+tech: ["Machine Learning", "Python", "NLP"]
+banner: "https://cdn.jsdelivr.net/gh/R-o-n-a-k/assets@main/assets/FND.gif"
+demoURL: "https://fakenewsdetection-t083.onrender.com"
+repoURL: "https://github.com/R-o-n-a-k/FND"
+---
+
+Fake News Detection is an application that uses machine learning and natural language processing techniques to classify news articles as real or fake.
+
+The project demonstrates practical usage of ML models integrated with a simple user interface.
+
+## ✨ Core Functionality
+
+- Text preprocessing and feature extraction
+- Machine learning-based classification
+- Simple and intuitive UI
+- Focus on accuracy and performance

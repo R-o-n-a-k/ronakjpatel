@@ -5,20 +5,13 @@ import { projectsMeta, projectsDetail } from "@consts";
 import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 
-
 const projects = await getCollection("projects");
+console.log(projects.map(p => p.slug));
 ---
 
 <PageLayout title={projectsMeta.title} description={projectsMeta.description}>
     <section>
         <SectionHeading headingText="Projects" />
-        {
-            projectsDetail.map((project) => (
-                <ArrowCard
-                    arrowCardTitle={project.title}
-                    arrowCardDescription={project.desc}
-                />
-            ))
-        }
+        {projects.map((project) => <ArrowCard entry={project} />)}
     </section>
 </PageLayout>
