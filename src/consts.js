@@ -22,6 +22,10 @@ export const socials = [
   { 
     name: "linkedin",
     href: "https://www.linkedin.com/in/ronak-j-patel",
+  },
+  {
+    name:"ronak.p.1206@gmail.com",
+    href:"mailto:ronak.p.1206@gmail.com"
   }
 ];
 

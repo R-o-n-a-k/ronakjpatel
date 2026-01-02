@@ -57,7 +57,7 @@
     }
     
     section {
-        @apply my-6 py-6;
+        @apply my-4 md:my-6 py-6;
 
     }
 }

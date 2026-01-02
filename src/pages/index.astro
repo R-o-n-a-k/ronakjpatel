@@ -8,20 +8,18 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
-const featuredProjects = projects.filter(
-  (project) => project.data.featured
-);
+const featuredProjects = projects.filter((project) => project.data.featured);
 ---
 
 <PageLayout title={homeMeta.title} description={homeMeta.description}>
 	<!-- Hero Section -->
 	<section>
 		<div
-			class="flex justify-between flex-col-reverse md:flex-row gap-y-6 mb-8"
+			class="flex justify-between flex-col-reverse md:flex-row gap-y-6 mb-6 md:mb-8"
 		>
 			<div class="hero-title">
 				<h1
-					class="font-bold text-3xl md:text-5xl text-foreground mb-2 tracking-wider"
+					class="font-bold text-3xl md:text-5xl text-foreground md:mb-2 tracking-wider"
 				>
 					Ronak Patel
 				</h1>
@@ -46,7 +44,7 @@ const featuredProjects = projects.filter(
 
 		<!-- About Section -->
 		<div
-			class="text-justify text-content tracking-wide flex flex-col gap-y-4"
+			class="text-justify text-content tracking-wide flex flex-col gap-y-4 text-sm md:text-base"
 		>
 			<p>
 				I approach my work the way an artist approaches a canvas, mixing
@@ -55,11 +53,18 @@ const featuredProjects = projects.filter(
 				code and creativity to craft art on the internet.
 			</p>
 			<p>
-				Feel free to explore some of my coding endeavors on <Link
+				Feel free to explore my coding endeavors on <Link
 					href="https://github.com/R-o-n-a-k"
 					class="font-semibold"
 					external
-					underline>GitHub</Link
+					underline>github</Link
+				> or view my <Link
+					href="/Resume.pdf"
+					class="font-semibold"
+					underline
+					external
+				>
+					resume</Link
 				>.
 			</p>
 		</div>
@@ -72,18 +77,7 @@ const featuredProjects = projects.filter(
 			headingLinkPath="/projects"
 		/>
 		<div>
-			
-			{featuredProjects.map((project) => (
-				<ArrowCard entry={project} />
-			))}
-			<!-- {
-            projectsDetail.map((project) => (
-                <ArrowCard
-                    arrowCardTitle={project.title}
-                    arrowCardDescription={project.desc}
-                />
-            ))
-        } -->
+			{featuredProjects.map((project) => <ArrowCard entry={project} />)}
 		</div>
 	</section>
 	<!-- Current Career Section -->
@@ -94,7 +88,9 @@ const featuredProjects = projects.filter(
 			headingLinkPath="/career"
 		/>
 		<div>
-			<p class="text-content">
+			<p
+				class="text-content text-sm md:text-base tracking-wide text-justify"
+			>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit.
 				Repudiandae eius quisquam provident eaque alias cupiditate rerum
 				atque deleniti, maxime natus maiores veniam non unde dolorem
@@ -106,35 +102,30 @@ const featuredProjects = projects.filter(
 	<section>
 		<SectionHeading headingText="Let's Connect" />
 		<div>
-			<p class="text-content">
+			<p class="text-content text-sm md:text-base">
 				Have an idea worth creating? Let’s craft it together — feel free
 				to reach out.
 			</p>
 			<ul class="flex flex-wrap gap-2 my-2">
 				{
-					socials.map((social) => (
+					socials.map((social, index) => (
 						<li class="flex gap-x-2 text-nowrap">
 							<Link
 								href={social.href}
 								external
 								underline
-								class="text-subContent hover:text-foreground"
+								class="text-subContent hover:text-foreground text-sm md:text-base"
 							>
 								{social.name}
 							</Link>
-							<span class="text-subContent">{"/"}</span>
+							{index < socials.length - 1 && (
+								<span class="text-subContent text-sm md:text-base">
+									/
+								</span>
+							)}
 						</li>
 					))
 				}
-				<li class="line-clamp-1">
-					<Link
-						href={`mailto:ronak.p.1206@gmail.com`}
-						underline
-						class="text-subContent hover:text-foreground"
-					>
-						ronak.p.1206@gmail.com
-					</Link>
-				</li>
 			</ul>
 		</div>
 	</section>
