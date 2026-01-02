@@ -1,6 +1,7 @@
 ---
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
+import SectionHeading from "@components/SectionHeading.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { Content } = await project.render();
+// const { Content } = await project.render();
 ---
 
 <PageLayout>
@@ -22,7 +23,7 @@ const { Content } = await project.render();
     <BackToPrev href="/projects"> Back to Projects </BackToPrev>
 
     <!-- Project Header -->
-    <div class="space-y-0.5 my-10">
+    <div class="space-y-0.5 my-10" id="header">
       <!-- Project Date -->
       <p class="text-xs md:text-sm text-subContent">{project.data.date}</p>
 
@@ -71,28 +72,49 @@ const { Content } = await project.render();
     />
 
     <!-- Project description -->
-    <div class="mt-5 mb-10">
-      <p class="text-sm md:text-base text-content">
-        {project.data.description}
-      </p>
-
-      <div class="flex gap-2 mt-5">
+    <div class="mt-5 mb-5">
+      <!-- Project Content -->
+      <div class="space-y-2 md:space-y-4">
         {
-          project.data.tech.map((t) => (
+          project.data.projectContent &&
+            project.data.projectContent.map((line) => (
+              <p class="text-content text-justify text-sm md:text-base ">
+                {line}
+              </p>
+            ))
+        }
+      </div>
+
+      <!-- Project Skills badge -->
+      <div class="flex gap-2 mt-4">
+        {
+          project.data.tech.map((skill) => (
             <span
-              class="text-xs md:text-sm px-2 py-1 border text-foreground 
+              class="text-xs md:text-sm px-2 py-0.5 border text-content 
            border-btn-hover-border bg-btn-hover
             rounded-full"
             >
-              {t}
+              {skill}
             </span>
           ))
         }
       </div>
-    </div>
+      <!-- Project Features -->
+      <div class="mt-10">
+        <SectionHeading headingText="Features" />
+        <ul class="flex flex-col gap-2">
+          {
+            project.data.features &&
+              project.data.features.map((feature) => (
+                <li class="text-content text-sm md:text-base">✅ {feature}</li>
+              ))
+          }
+        </ul>
+      </div>
 
-    <article class="prose max-w-none">
+      <!-- <article class="prose max-w-none">
       <Content />
-    </article>
+    </article> -->
+    </div>
   </section>
 </PageLayout>

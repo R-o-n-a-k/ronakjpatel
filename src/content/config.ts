@@ -6,11 +6,13 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.string(),
-    featured: z.boolean().default(false),
-    tech: z.array(z.string()),
+    currentProject: z.boolean().default(false),
     banner: z.string().url().optional(),
     demoURL: z.string().url().optional(),
     repoURL: z.string().url().optional(),
+    tech: z.array(z.string()),
+    projectContent:z.array(z.string()).optional(),
+    features:z.array(z.string()).optional()
   }),
 });
 

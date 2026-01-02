@@ -37,5 +37,19 @@ const { title, description } = Astro.props;
 
       localStorage.setItem("theme", newTheme);
     });
+
+    // -------------------------------
+    // BACK TO TOP BUTTON
+    // -------------------------------
+    const backBtn = document.getElementById("back-to-top");
+    if (backBtn) {
+      backBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    }
   });
 </script>

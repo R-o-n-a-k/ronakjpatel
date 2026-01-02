@@ -1,9 +1,13 @@
 ---
+import BackToTop from "./BackToTop.astro";
 import ThemeButton from "./ThemeButton.astro";
 let currentYear = new Date().getFullYear();
 ---
 
-<div class="text-xs md:text-sm tracking-wider text-subContent flex justify-between items-center pb-6 mt-20">
+<div class="relative text-xs md:text-sm tracking-wider text-subContent flex justify-between items-center pb-6 mt-30">
+    <div class="absolute right-0 -top-20">
+        <BackToTop />
+      </div>
     <div>
         &copy; {currentYear} {`|`} Ronak Patel
     </div>

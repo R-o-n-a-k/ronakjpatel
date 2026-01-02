@@ -8,7 +8,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
-const featuredProjects = projects.filter((project) => project.data.featured);
+const currentProjects = projects.filter((project) => project.data.currentProject);
 ---
 
 <PageLayout title={homeMeta.title} description={homeMeta.description}>
@@ -77,7 +77,7 @@ const featuredProjects = projects.filter((project) => project.data.featured);
 			headingLinkPath="/projects"
 		/>
 		<div>
-			{featuredProjects.map((project) => <ArrowCard entry={project} />)}
+			{currentProjects.map((project) => <ArrowCard entry={project} />)}
 		</div>
 	</section>
 	<!-- Current Career Section -->
