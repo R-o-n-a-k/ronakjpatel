@@ -5,7 +5,7 @@ import { projectsMeta, projectsDetail } from "@consts";
 import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 
-const projects = await getCollection("projects");
+const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <PageLayout title={projectsMeta.title} description={projectsMeta.description}>

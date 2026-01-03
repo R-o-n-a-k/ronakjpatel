@@ -74,7 +74,7 @@ const { project } = Astro.props;
     <!-- Project description -->
     <div class="mt-5 mb-5">
       <!-- Project Content -->
-      <div class="space-y-2 md:space-y-4">
+      <div class="space-y-4">
         {
           project.data.projectContent &&
             project.data.projectContent.map((line) => (
@@ -86,7 +86,7 @@ const { project } = Astro.props;
       </div>
 
       <!-- Project Skills badge -->
-      <div class="flex gap-2 mt-4">
+      <div class="w-full flex flex-wrap gap-2 mt-4">
         {
           project.data.tech.map((skill) => (
             <span
@@ -99,6 +99,7 @@ const { project } = Astro.props;
           ))
         }
       </div>
+      
       <!-- Project Features -->
       <div class="mt-10">
         <SectionHeading headingText="Features" />
