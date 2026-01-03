@@ -6,7 +6,6 @@ import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
-console.log(projects.map(p => p.slug));
 ---
 
 <PageLayout title={projectsMeta.title} description={projectsMeta.description}>
